@@ -6,6 +6,6 @@ jobs:
   greeting:
     - run: |
       echo "Hello world"
-      export MyVar=Hello again
+      export MyVar=Bonjour
       echo "::set-env name=MyMessage::$MyVar"
   - run: echo $MyMessage
