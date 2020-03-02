@@ -2,10 +2,13 @@ name: Click
 
 on: [repository_dispatch]
 
+
 jobs:
-  greeting:
+  doSomething:
+    runs-on: ubuntu-latest
+    steps:
     - run: |
+      export MyVar=Hello
       echo "Hello world"
-      export MyVar=Bonjour
       echo "::set-env name=MyMessage::$MyVar"
-  - run: echo $MyMessage
+    - run: echo $MyMessage
