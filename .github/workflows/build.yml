@@ -29,6 +29,6 @@ jobs:
     - name: Build
       run: npm run build --if-present
     - name: Unit Tests
-      run: npm test:unit
+      run: npm run test:unit
       env:
         CI: true
