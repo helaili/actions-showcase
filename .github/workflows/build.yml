@@ -34,3 +34,11 @@ jobs:
         CI: true
     - name: Cypress run
         uses: cypress-io/github-action@v1
+        with:
+          start: npm run serve
+          wait-on: http://localhost:8080/
+          config_file: cypress.json
+          spec: "tests/e2e/**/*"
+        env:
+          CYPRESS_baseUrl: http://localhost:8080/
+
