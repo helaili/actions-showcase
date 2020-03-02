@@ -45,13 +45,13 @@ jobs:
       uses: actions/upload-artifact@v1
       if: failure()
       with:
-        name: cypress-screenshots
+        name: cypress-screenshots-${{ runner.os }}-${{ matrix.node-version }}
         path: tests/e2e/screenshots
       # Test run video was always captured, so this action uses "always()" condition
     - name: Save Cypress Videos
       uses: actions/upload-artifact@v1
       if: always()
       with:
-        name: cypress-videos
+        name: cypress-videos-${{ runner.os }}-${{ matrix.node-version }}
         path: tests/e2e/videos
 
