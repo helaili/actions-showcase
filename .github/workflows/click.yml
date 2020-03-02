@@ -5,7 +5,7 @@ on: [repository_dispatch]
 jobs:
   greeting:
     - run: |
-      echo 'Hello world'
-      export MyVar=:+1:
+      echo "Hello world"
+      export MyVar=":+1:""
       echo "::set-env name=MyMessage::$MyVar"
   - run: echo $MyMessage
