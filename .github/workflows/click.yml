@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        export MyVar=Hello
+        export MyVar="This is a flic button triggered workflow"
         echo "Hello world"
         echo "::set-env name=MyMessage::$MyVar"
     - run: echo $MyMessage
