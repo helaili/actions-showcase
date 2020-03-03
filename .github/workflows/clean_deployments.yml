@@ -14,14 +14,11 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          console.log(context.payload.pull_request.base)
-          console.log(context.payload.pull_request.head)
-          const branchRegex = /refs\/heads\/(.*)/
-          const matches = branchRegex.exec(context.payload.ref)
+          console.log(context.payload.pull_request.head.ref)
           github.repos.listDeployments({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            ref: matches[1]
+            ref: context.payload.pull_request.head.ref
           }).then(deployments => {
             for (const deployment of deployments.data) {
               github.repos.createDeploymentStatus({
