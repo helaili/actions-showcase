@@ -25,6 +25,7 @@ jobs:
             deployment_id: context.payload.deployment.id,
             state: 'in_progress',
             description: 'Deployment from GitHub Actions started', 
+            target_url: log_url,
             log_url: log_url
           })
   
@@ -80,6 +81,25 @@ jobs:
       with:
         app-name: ${{ format('{0}-{1}', 'act-show-preview', github.sha) }}
         images: ${{ format('{0}/{1}/{2}:{3}', 'docker.pkg.github.com', github.repository, 'actions-showcase', github.sha) }}
+    - uses: actions/github-script@0.8.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          let run = process.env.GITHUB_RUN_ID
+          let log_url = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${run}`
+          let environment_url = `https://act-show-preview-${github.sha}.azurewebsites.net`
+          github.repos.createDeploymentStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            mediaType: {
+              previews: ["flash-preview", "ant_man"]
+            },
+            deployment_id: context.payload.deployment.id,
+            state: 'success',
+            description: 'Deployment to Azure succeeded', 
+            environment_url: environment_url,
+            log_url: log_url
+          })
 
 
         
