@@ -12,6 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: hmarr/debug-action@master
     - run: echo "::warning::${{github.event}}"
     - uses: actions/github-script@0.8.0
       with:
@@ -20,6 +21,6 @@ jobs:
           github.repos.createDeploymentStatus({
             'helaili',
             'actions-showcase',
-            5,
+            '5',
             'Deploying to test'
           })
