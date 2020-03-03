@@ -1,0 +1,25 @@
+name: Deploy a review app on Azure
+
+on:
+  deployment
+
+jobs:
+
+  deploy:
+    name: Deploy
+    if: github.event.deployment.environment == 'test'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: actions/checkout@v2
+    - run: echo ${{context.github}}
+    - uses: actions/github-script@0.8.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.repos.createDeploymentStatus({
+              context.repo.owner,
+              context.repo.repo,
+              context.github.event.id,
+              'Deploying to test'
+            })

@@ -1,0 +1,17 @@
+labels:
+  Deploy%20to%20Staging:
+    environment: staging
+    description: Staging deployment
+    transient_environment: false
+  Deploy%20to%20QA:
+    environment: qa
+    description: QA deployment
+    transient_environment: false
+    auto_merge: false
+    required_contexts: ['build (12.x)']
+  Deploy%20to%20Test:
+    environment: test
+    description: Deployment to the test lab
+    transient_environment: true
+    auto_merge: false
+    required_contexts: ['build (12.x)']
