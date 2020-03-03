@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: echo ${{github}}
+    - run: echo ${{github.event}}
     - uses: actions/github-script@0.8.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
@@ -20,6 +20,6 @@ jobs:
           github.repos.createDeploymentStatus({
             context.repo.owner,
             context.repo.repo,
-            context.github.event.id,
+            context.deployment.id,
             'Deploying to test'
           })
