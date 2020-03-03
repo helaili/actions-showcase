@@ -87,7 +87,7 @@ jobs:
         script: |
           let run = process.env.GITHUB_RUN_ID
           let log_url = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${run}`
-          let environment_url = `https://act-show-preview-${github.sha}.azurewebsites.net`
+          let environment_url = `https://act-show-preview-${process.env.GITHUB_SHA}.azurewebsites.net`
           github.repos.createDeploymentStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
