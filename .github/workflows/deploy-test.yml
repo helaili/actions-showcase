@@ -33,6 +33,7 @@ jobs:
     needs: update_status
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/$GITHUB_REPOSITORY/actions-showcase:$GITHUB_SHA
     - name: Publish to GitHub Package Registry
