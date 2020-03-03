@@ -28,7 +28,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 mediaType: {
-                  previews: ["flash-preview", "ant_man"]
+                  previews: ["flash-preview", "ant-man"]
                 },
                 deployment_id: deployment.id,
                 state: 'inactive',

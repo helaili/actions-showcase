@@ -20,7 +20,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             mediaType: {
-              previews: ["flash-preview", "ant_man"]
+              previews: ["flash-preview", "ant-man"]
             },
             deployment_id: context.payload.deployment.id,
             state: 'in_progress',
@@ -92,7 +92,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             mediaType: {
-              previews: ["flash-preview", "ant_man"]
+              previews: ["flash-preview", "ant-man"]
             },
             deployment_id: context.payload.deployment.id,
             state: 'success',
@@ -110,7 +110,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             mediaType: {
-              previews: ["flash-preview", "ant_man"]
+              previews: ["flash-preview", "ant-man"]
             },
             deployment_id: context.payload.deployment.id,
             state: 'failure',
