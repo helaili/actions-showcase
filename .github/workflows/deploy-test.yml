@@ -16,6 +16,8 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
+          let run = process.env.GITHUB_RUN_ID
+          let log_url = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${run}`
           github.repos.createDeploymentStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
@@ -24,7 +26,7 @@ jobs:
             },
             deployment_id: context.payload.deployment.id,
             state: 'in_progress',
-            log_url: ${{format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id)}}"
+            log_url: log_url
           })
 
           
