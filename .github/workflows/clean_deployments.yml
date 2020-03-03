@@ -1,7 +1,9 @@
 name: Cleanup
 
 on:
-  pull_request
+  pull_request:
+    types: [closed]
+
 
 jobs:
 
@@ -10,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
     - uses: actions/github-script@0.8.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
