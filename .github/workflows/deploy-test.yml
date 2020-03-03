@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: hmarr/debug-action@master
-    - run: echo "::warning::${{github.event.deployment.id}} {{github.run_id}} {{github.run_number}}"
+    - run: echo "::warning::${{github.event.deployment.id}} ${{github.run_id}} ${{github.run_number}}"
     - uses: actions/github-script@0.8.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
