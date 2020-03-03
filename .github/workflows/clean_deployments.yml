@@ -15,7 +15,13 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
+<<<<<<< HEAD
           console.log(context.payload.pull_request.head.ref)
+=======
+          console.log(context)
+          const branchRegex = /refs\/heads\/(.*)/
+          const matches = branchRegex.exec(context.payload.ref)
+>>>>>>> Remove apps
           github.repos.listDeployments({
             owner: context.repo.owner,
             repo: context.repo.repo,
