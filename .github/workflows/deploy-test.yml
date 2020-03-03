@@ -16,7 +16,6 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          console.log(process.env)
           github.repos.createDeploymentStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
