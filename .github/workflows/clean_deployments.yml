@@ -1,7 +1,9 @@
 name: Cleanup
 
 on:
-  pull_request
+  pull_request:
+    types: [closed]
+
 
 jobs:
 
