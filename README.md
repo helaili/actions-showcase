@@ -32,3 +32,5 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+We got a :star: from [@pfdzm](https://github.com/pfdzm)
