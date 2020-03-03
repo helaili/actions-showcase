@@ -14,4 +14,4 @@ labels:
     description: Deployment to the test lab
     transient_environment: true
     auto_merge: false
-    required_contexts: ['build (12.x)']
+    required_contexts: []
