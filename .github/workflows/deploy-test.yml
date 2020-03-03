@@ -22,5 +22,5 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             deployment_id: '206325607',
-            state: 'in_progress'
+            status: 'in_progress'
           })
