@@ -55,8 +55,8 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Create the review app
       env:
-        RESOURCE_GROUP: bookstore
-        APP_SERVICE_PLAN: bookstore-app-service-plan
+        RESOURCE_GROUP: actions-showcase
+        APP_SERVICE_PLAN: actions-showcase-app-service-plan
         WEBAPP_NAME_PREFIX: actions-showcase
         DOCKER_REGISTRY_URL: docker.pkg.github.com
       run: |
