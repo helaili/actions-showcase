@@ -26,5 +26,5 @@ jobs:
             },
             deployment_id: context.payload.deployment.id,
             state: 'in_progress',
-            log_url: 'https://github.com/helaili/actions-showcase/runs/482266099?check_suite_focus=true'
+            log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.run_id}`
           })
