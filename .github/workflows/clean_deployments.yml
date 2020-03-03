@@ -11,28 +11,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checking out the code
-      uses: actions/checkout@v2
     - uses: actions/github-script@0.8.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          console.log(context)
+          const branchRegex = /refs\/heads\/(.*)/
+          const matches = branchRegex.exec(context.payload.ref)
           
-          const deployments = await github.repos.listDeployments({
+          github.repos.listDeployments({
             owner: context.repo.owner,
-            repo: context.repo.repo
+            repo: context.repo.repo,
+            ref: matches[1]
+          }).then(deployments => {
+            for (const deployment of deployments.data) {
+              github.repos.createDeploymentStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                mediaType: {
+                  previews: ["flash-preview", "ant-man"]
+                },
+                deployment_id: deployment.id,
+                state: 'inactive',
+                description: 'Destroyed after Pull Request merge'
+              })
+            }
           })
-          console.log(deployments)
-          for (const deployment of deployments) {
-            github.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              mediaType: {
-                previews: ["flash-preview", "ant_man"]
-              },
-              deployment_id: deployment.id,
-              state: 'inactive',
-              description: 'Destroyed after Pull Request merge'
-            })
-          }
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Delete the review apps
+      env:
+        RESOURCE_GROUP: actions-showcase
+        QUERY: ${{ format('[?tags.ref==''refs/heads/{0}''&&tags.type==''{1}'']', github.head_ref, 'review') }}
+      run: |
+        echo $QUERY
+        az webapp list --resource-group $RESOURCE_GROUP --query "$QUERY" > webapplist.json
+        cat webapplist.json
+        WEBAPP_ID_LIST=$(jq -j '.[].id+" "' webapplist.json) && echo $WEBAPP_ID_LIST && az webapp delete --ids $WEBAPP_ID_LIST --keep-empty-plan

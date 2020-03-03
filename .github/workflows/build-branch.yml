@@ -5,11 +5,10 @@ on:
     branches-ignore:
     - master
     paths-ignore:
-    - '.github/workflows/**'
+    - '.github/workflowsxxx/**'
 
 jobs:
   build:
-
     runs-on: ubuntu-16.04
 
     strategy:
