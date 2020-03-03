@@ -1,0 +1,38 @@
+name: Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+
+  clean:
+    name: Cleanup Review apps
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checking out the code
+      uses: actions/checkout@v2
+    - uses: actions/github-script@0.8.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          console.log(context)
+          
+          const deployments = await github.repos.listDeployments({
+            owner: context.repo.owner,
+            repo: context.repo.repo
+          })
+          console.log(deployments)
+          for (const deployment of deployments) {
+            github.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              mediaType: {
+                previews: ["flash-preview", "ant_man"]
+              },
+              deployment_id: deployment.id,
+              state: 'inactive',
+              description: 'Destroyed after Pull Request merge'
+            })
+          }
