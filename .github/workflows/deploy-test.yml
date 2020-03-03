@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: hmarr/debug-action@master
-    - run: echo "::warning::${{github.event.deployment.id}}"
+    - run: echo "::warning::${{github.event.deployment.id}} {{github.run_id}} {{github.run_number}}"
     - uses: actions/github-script@0.8.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
@@ -22,8 +22,9 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             mediaType: {
-              previews: ["flash-preview"]
+              previews: ["flash-preview", "ant_man"]
             },
             deployment_id: context.payload.deployment.id,
-            state: 'in_progress'
+            state: 'in_progress',
+            log_url: 'https://github.com/helaili/actions-showcase/runs/482266099?check_suite_focus=true'
           })
