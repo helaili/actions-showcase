@@ -14,12 +14,12 @@ jobs:
     - name: actions/checkout@v2
     - run: echo ${{context.github}}
     - uses: actions/github-script@0.8.0
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.repos.createDeploymentStatus({
-              context.repo.owner,
-              context.repo.repo,
-              context.github.event.id,
-              'Deploying to test'
-            })
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.repos.createDeploymentStatus({
+            context.repo.owner,
+            context.repo.repo,
+            context.github.event.id,
+            'Deploying to test'
+          })
