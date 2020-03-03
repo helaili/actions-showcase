@@ -74,11 +74,11 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - uses: azure/appservice-actions/webapp-container@master
-      env:
-        WEBAPP_NAME_PREFIX: act-show-preview
+    - uses: azure/webapps-container-deploy@v1
       with:
         app-name: ${{ format('{0}-{1}', 'act-show-preview', github.sha) }}
         images: ${{ format('{0}/{1}/{2}:{3}', 'docker.pkg.github.com', github.repository, 'actions-showcase', github.sha) }}
 
+        
+        
 
