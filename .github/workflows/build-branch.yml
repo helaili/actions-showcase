@@ -17,11 +17,27 @@ jobs:
         script: |
           console.log(context)
           console.log(context.payload.ref)
+          const branchRegex = /refs\/heads\/(.*)/
+          const matches = regex.exec(context.payload.ref)
+          console.log(matches[1])
+
           github.repos.listDeployments({
             owner: context.repo.owner,
             repo: context.repo.repo
           }).then(deployments => {
             console.log(deployments)
+            for (const deployment of deployments) {
+              github.repos.createDeploymentStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                mediaType: {
+                  previews: ["flash-preview", "ant_man"]
+                },
+                deployment_id: deployment.id,
+                state: 'inactive',
+                description: 'Destroyed after Pull Request merge'
+              })
+            }
           })
 
   build:
