@@ -1,8 +1,7 @@
 name: Cleanup
 
 on:
-  pull_request:
-    types: [closed]
+  pull_request
 
 jobs:
 
@@ -15,7 +14,8 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          console.log(context)
+          console.log(context.payload.base)
+          console.log(context.payload.head)
           const branchRegex = /refs\/heads\/(.*)/
           const matches = branchRegex.exec(context.payload.ref)
           github.repos.listDeployments({
