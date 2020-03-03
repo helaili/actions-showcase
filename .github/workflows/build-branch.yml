@@ -18,7 +18,7 @@ jobs:
           console.log(context)
           console.log(context.payload.ref)
           const branchRegex = /refs\/heads\/(.*)/
-          const matches = regex.exec(context.payload.ref)
+          const matches = branchRegex.exec(context.payload.ref)
           console.log(matches[1])
 
           github.repos.listDeployments({
