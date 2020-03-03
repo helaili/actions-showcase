@@ -15,9 +15,9 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
+          console.log(context)
           const branchRegex = /refs\/heads\/(.*)/
           const matches = branchRegex.exec(context.payload.ref)
-          
           github.repos.listDeployments({
             owner: context.repo.owner,
             repo: context.repo.repo,
