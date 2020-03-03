@@ -15,8 +15,6 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          console.log(context)
-          console.log(context.payload.ref)
           const branchRegex = /refs\/heads\/(.*)/
           const matches = branchRegex.exec(context.payload.ref)
           console.log(matches[1])
@@ -25,8 +23,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo
           }).then(deployments => {
-            console.log(deployments)
-            for (const deployment of deployments) {
+            for (const deployment of deployments.data) {
               github.repos.createDeploymentStatus({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
