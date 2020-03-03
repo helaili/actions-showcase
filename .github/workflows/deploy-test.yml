@@ -58,7 +58,7 @@ jobs:
         RESOURCE_GROUP: actions-showcase
         APP_SERVICE_PLAN: actions-showcase-app-service-plan
         CONTAINE_NAME: actions-showcase
-        WEBAPP_NAME_PREFIX: actions-showcase-preview
+        WEBAPP_NAME_PREFIX: act-show-preview
         DOCKER_REGISTRY_URL: docker.pkg.github.com
       run: |
         az webapp create --resource-group $RESOURCE_GROUP --plan $APP_SERVICE_PLAN --name $WEBAPP_NAME_PREFIX-$GITHUB_SHA --deployment-container-image-name docker.pkg.github.com/$GITHUB_REPOSITORY/$CONTAINE_NAME:$GITHUB_SHA
@@ -76,9 +76,9 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: azure/appservice-actions/webapp-container@master
       env:
-        WEBAPP_NAME_PREFIX: actions-showcase-preview
+        WEBAPP_NAME_PREFIX: act-show-preview
       with:
-        app-name: ${{ format('{0}-{1}', 'actions-showcase-preview', github.sha) }}
+        app-name: ${{ format('{0}-{1}', 'act-show-preview', github.sha) }}
         images: ${{ format('{0}/{1}/{2}:{3}', 'docker.pkg.github.com', github.repository, 'actions-showcase', github.sha) }}
 
 
