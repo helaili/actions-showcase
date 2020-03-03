@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/$GITHUB_REPOSITORY/actions-showcase:$GITHUB_SHA
     - name: Publish to GitHub Package Registry
       env:
-        DOCKER_TOKEN: ${{secrets.GPR_TOKEN}}
+        DOCKER_TOKEN: ${{secrets.GITHUB_TOKEN}}
         DOCKER_USER: <token>
       run: |
         docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_TOKEN
