@@ -5,11 +5,26 @@ on:
     branches-ignore:
     - master
     paths-ignore:
-    - '.github/workflows/**'
+    - '.github/workflowsxxx/**'
 
 jobs:
-  build:
+  debug: 
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/github-script@0.8.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          console.log(context)
+          console.log(context.pull_request.base)
+          github.repos.listDeployments({
+            owner: context.repo.owner,
+            repo: context.repo.repo
+          }).then(deployments => {
+            console.log(deployments)
+          })
 
+  build:
     runs-on: ubuntu-16.04
 
     strategy:

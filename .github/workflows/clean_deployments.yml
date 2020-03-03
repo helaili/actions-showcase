@@ -18,21 +18,11 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           console.log(context)
-          
-          const deployments = await github.repos.listDeployments({
+          console.log(context.pull_request.base)
+          github.repos.listDeployments({
             owner: context.repo.owner,
             repo: context.repo.repo
+          }).then(deployments => {
+            console.log(deployments)
           })
-          console.log(deployments)
-          for (const deployment of deployments) {
-            github.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              mediaType: {
-                previews: ["flash-preview", "ant_man"]
-              },
-              deployment_id: deployment.id,
-              state: 'inactive',
-              description: 'Destroyed after Pull Request merge'
-            })
-          }
+          
