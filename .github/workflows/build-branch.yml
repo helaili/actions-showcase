@@ -1,9 +1,11 @@
-name: Node.js CI
+name: Node.js CI on a feature branch
 
 on:
   push:
+    branches-ignore:
+    - master
     paths-ignore:
-      - '.github/workflows'
+    - '.github/workflows'
 
 jobs:
   build:
