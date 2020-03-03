@@ -21,6 +21,6 @@ jobs:
           github.repos.createDeploymentStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            deployment_id: context.paylod.deployment.id,
+            deployment_id: context.payload.deployment.id,
             state: 'success'
           })
