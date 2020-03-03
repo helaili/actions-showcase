@@ -21,6 +21,9 @@ jobs:
           github.repos.createDeploymentStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
+            mediaType: {
+              previews: ["flash-preview"]
+            },
             deployment_id: context.payload.deployment.id,
-            state: 'success'
+            state: 'in_progress'
           })
