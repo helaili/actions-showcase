@@ -16,7 +16,7 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           console.log(context)
-          console.log(context.pull_request.base)
+          console.log(context.payload.ref)
           github.repos.listDeployments({
             owner: context.repo.owner,
             repo: context.repo.repo
