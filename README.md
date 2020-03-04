@@ -1,5 +1,7 @@
 # actions-showcase
 
+![Node.js CI on a feature branch](https://github.com/helaili/actions-showcase/workflows/Node.js%20CI%20on%20a%20feature%20branch/badge.svg)
+
 ## Project setup
 ```
 npm install
