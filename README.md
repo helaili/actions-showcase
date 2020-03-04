@@ -45,3 +45,5 @@ We got a :star: from [@jelhaouchi](https://github.com/jelhaouchi)
 We got a :star: from [@Lowfly](https://github.com/Lowfly)
 
 We got a :star: from [@ludovicl](https://github.com/ludovicl)
+
+We got a :star: from [@Julien-szpytma](https://github.com/Julien-szpytma)
