@@ -12,7 +12,6 @@ jobs:
         export MyVar="This is a flic button triggered workflow"
         echo "Hello world"
         echo "::set-env name=MyMessage::$MyVar"
-        echo "::set-env name=MyMessage::$MyVar"
         echo "::debug file=.github/workflows/click.yml,line=15::I'm debugging here"
         echo "::warning file=.github/workflows/click.yml,line=16::I'm warning you"
     - run: echo $MyMessage
