@@ -5,6 +5,7 @@ on: [repository_dispatch]
 
 jobs:
   doSomething:
+    name: Do Something on a button click
     runs-on: ubuntu-latest
     steps:
     - run: |
