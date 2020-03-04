@@ -5,10 +5,14 @@ on: [repository_dispatch]
 
 jobs:
   doSomething:
+    name: Do Something on a button click
     runs-on: ubuntu-latest
     steps:
     - run: |
         export MyVar="This is a flic button triggered workflow"
         echo "Hello world"
         echo "::set-env name=MyMessage::$MyVar"
+        echo "::set-env name=MyMessage::$MyVar"
+        echo "::debug file=.github/workflows/click.yml,line=15::I'm debugging here"
+        echo "::warning file=.github/workflows/click.yml,line=16::I'm warning you"
     - run: echo $MyMessage

@@ -48,5 +48,7 @@ jobs:
       run: |
         echo $QUERY
         az webapp list --resource-group $RESOURCE_GROUP --query "$QUERY" > webapplist.json
-        cat webapplist.json
-        WEBAPP_ID_LIST=$(jq -j '.[].id+" "' webapplist.json) && echo $WEBAPP_ID_LIST && az webapp delete --ids $WEBAPP_ID_LIST --keep-empty-plan
+        WEBAPP_ID_LIST=$(jq -j '.[].id+" "' webapplist.json) 
+        echo $WEBAPP_ID_LIST
+        echo "::debug::About to delete the following Azure Webapps : $WEBAPP_ID_LIST"
+        if [ ${#WEBAPP_ID_LIST[@]} -ne 0 ]; then az webapp delete --ids $WEBAPP_ID_LIST --keep-empty-plan; fi
