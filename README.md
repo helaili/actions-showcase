@@ -53,3 +53,5 @@ We got a :star: from [@Alezco](https://github.com/Alezco)
 We got a :star: from [@helaili](https://github.com/helaili)
 
 We got a :star: from [@bolivard-k](https://github.com/bolivard-k)
+
+We got a :star: from [@philippart-s](https://github.com/philippart-s)
