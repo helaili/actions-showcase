@@ -10,3 +10,8 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+
+function endsWith(x, y) {
+  return x.lastIndexOf(y) === x.length - y.length;
+}
