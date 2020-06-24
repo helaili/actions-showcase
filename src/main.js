@@ -10,7 +10,8 @@ const httpclient = axios.create({
   baseURL: 'https://api.github.com',
   timeout: 1000,
   headers: {
-    Authorization: `token ${process.env.TOKEN}`
+    // Authorization: `token ${process.env.TOKEN}`
+    Authorization: 'token 1234-1234-xyz-abc-1234'
   }
 })
 
