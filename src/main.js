@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 const httpclient = axios.create({
   baseURL: 'https://api.github.com/octocat',
   timeout: 1000,
-  headers: {'Authorization': `token ${process.env.TOKEN}`}
+  headers: { 'Authorization': `token ${process.env.TOKEN}` }
 })
 
 Vue.prototype.$http = httpclient

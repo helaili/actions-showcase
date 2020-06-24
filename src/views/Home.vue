@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     clicked () {
-      console.log('clicked')
+      this.$http.get('/octocat')
     },
     endsWith (x, y) {
       return x.lastIndexOf(y) === x.length - y.length
